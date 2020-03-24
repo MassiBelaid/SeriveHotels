@@ -61,6 +61,7 @@ namespace ClientAgence
                     //MessageBox.Show(listOffres[0]);
                     Form2 f2 = new Form2(listOffres,dateArrive,dateDepart, nbLits);
                     f2.Show();
+                    this.Hide();
                 }
                 
             }

@@ -37,6 +37,13 @@ namespace ClientAgence.ServiceHotel {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/Reserver", ReplyAction="*")]
         System.Threading.Tasks.Task<ClientAgence.ServiceHotel.ReserverResponse> ReserverAsync(ClientAgence.ServiceHotel.ReserverRequest request);
+        
+        // CODEGEN : La génération du contrat de message depuis le nom d'élément SendImageResult de l'espace de noms http://tempuri.org/ n'est pas marqué nillable
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendImage", ReplyAction="*")]
+        ClientAgence.ServiceHotel.SendImageResponse SendImage(ClientAgence.ServiceHotel.SendImageRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/SendImage", ReplyAction="*")]
+        System.Threading.Tasks.Task<ClientAgence.ServiceHotel.SendImageResponse> SendImageAsync(ClientAgence.ServiceHotel.SendImageRequest request);
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
@@ -223,6 +230,67 @@ namespace ClientAgence.ServiceHotel {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendImageRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendImage", Namespace="http://tempuri.org/", Order=0)]
+        public ClientAgence.ServiceHotel.SendImageRequestBody Body;
+        
+        public SendImageRequest() {
+        }
+        
+        public SendImageRequest(ClientAgence.ServiceHotel.SendImageRequestBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute()]
+    public partial class SendImageRequestBody {
+        
+        public SendImageRequestBody() {
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(IsWrapped=false)]
+    public partial class SendImageResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Name="SendImageResponse", Namespace="http://tempuri.org/", Order=0)]
+        public ClientAgence.ServiceHotel.SendImageResponseBody Body;
+        
+        public SendImageResponse() {
+        }
+        
+        public SendImageResponse(ClientAgence.ServiceHotel.SendImageResponseBody Body) {
+            this.Body = Body;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.Runtime.Serialization.DataContractAttribute(Namespace="http://tempuri.org/")]
+    public partial class SendImageResponseBody {
+        
+        [System.Runtime.Serialization.DataMemberAttribute(EmitDefaultValue=false, Order=0)]
+        public string SendImageResult;
+        
+        public SendImageResponseBody() {
+        }
+        
+        public SendImageResponseBody(string SendImageResult) {
+            this.SendImageResult = SendImageResult;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface ServiceHotelSoapChannel : ClientAgence.ServiceHotel.ServiceHotelSoap, System.ServiceModel.IClientChannel {
     }
@@ -322,6 +390,29 @@ namespace ClientAgence.ServiceHotel {
             inValue.Body.prenom = prenom;
             inValue.Body.numCarte = numCarte;
             return ((ClientAgence.ServiceHotel.ServiceHotelSoap)(this)).ReserverAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        ClientAgence.ServiceHotel.SendImageResponse ClientAgence.ServiceHotel.ServiceHotelSoap.SendImage(ClientAgence.ServiceHotel.SendImageRequest request) {
+            return base.Channel.SendImage(request);
+        }
+        
+        public string SendImage() {
+            ClientAgence.ServiceHotel.SendImageRequest inValue = new ClientAgence.ServiceHotel.SendImageRequest();
+            inValue.Body = new ClientAgence.ServiceHotel.SendImageRequestBody();
+            ClientAgence.ServiceHotel.SendImageResponse retVal = ((ClientAgence.ServiceHotel.ServiceHotelSoap)(this)).SendImage(inValue);
+            return retVal.Body.SendImageResult;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<ClientAgence.ServiceHotel.SendImageResponse> ClientAgence.ServiceHotel.ServiceHotelSoap.SendImageAsync(ClientAgence.ServiceHotel.SendImageRequest request) {
+            return base.Channel.SendImageAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<ClientAgence.ServiceHotel.SendImageResponse> SendImageAsync() {
+            ClientAgence.ServiceHotel.SendImageRequest inValue = new ClientAgence.ServiceHotel.SendImageRequest();
+            inValue.Body = new ClientAgence.ServiceHotel.SendImageRequestBody();
+            return ((ClientAgence.ServiceHotel.ServiceHotelSoap)(this)).SendImageAsync(inValue);
         }
     }
 }

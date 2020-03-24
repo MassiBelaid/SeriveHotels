@@ -56,7 +56,12 @@ namespace ClientAgence
                 }
                 else
                 {
-                    MessageBox.Show("Chambre réservé avec le numéro de reservation " + reponse);
+                    //MessageBox.Show("Chambre réservé avec le numéro de reservation " + reponse);
+                    
+                    string imageStr = serviceH.SendImage();
+                    ImageForm imageForm = new ImageForm(imageStr,reponse);
+                    imageForm.Show();
+                    this.Hide();
                 }
             }
             

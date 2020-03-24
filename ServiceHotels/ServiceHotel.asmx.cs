@@ -22,6 +22,7 @@ namespace ServiceHotels
 
         public ServiceHotel()
         {
+
             Hotel h1 = new Hotel(01, "hilton", "Luxe", "France", "paris", "rivoli", 35, 3);
             h1.AddChambre(new Chambre(1, 2, 75));
             h1.AddChambre(new Chambre(2, 3, 80));
@@ -77,6 +78,7 @@ namespace ServiceHotels
             Dictionary<int, Chambre> d = new Dictionary<int, Chambre>();
 
             Agence a = listeAgences[idAgence];
+            double numberDays = (dD - dA).TotalDays;
 
             if (a != null && a.motDePasse == mdpAgence)
             {
@@ -85,10 +87,11 @@ namespace ServiceHotels
                 {
                     foreach (Chambre c in h.getChambresDispo(nbPers, dA, dD))
                     {
+                        double prixNuit = c.prix + (c.prix * (double)a.pourcentage / 100);
                         numero++;
-                        l.Add("num : " + numero + ", Hotel : " + c.hotel.nomHotel + ", Ville : " + (
-                            c.hotel.ville + ", places  " + c.nbLits + ", places " + ", Prix : " +
-                            (c.prix+(c.prix * (double)a.pourcentage/100))) + " euros.");
+                        l.Add("num : " + numero + ", Hotel : " + c.hotel.nomHotel + ", Ville : " + 
+                            c.hotel.ville + ", places : " + c.nbLits + " places " + ", Prix : " +
+                            prixNuit + " euros/nuit, "+"total pour "+numberDays+" nuits : "+(numberDays*prixNuit)+" euros.");
                         d.Add(numero, c);
                         
                     }
@@ -147,6 +150,22 @@ namespace ServiceHotels
                 return "Compte Agence Incorrecte";
             }
 
+        }
+
+        [WebMethod]
+        public string SendImage()
+        {
+            string imageStr = "";
+            
+            System.Drawing.Image image = System.Drawing.Image.FromFile(Server.MapPath("img")+"\\chambre1.png");
+            System.IO.MemoryStream stream = new System.IO.MemoryStream();
+            image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+            byte[] imageByte = stream.ToArray();
+            imageStr = Convert.ToBase64String(imageByte);
+            stream.Dispose();
+            image.Dispose();
+
+            return imageStr;
         }
 
     }
