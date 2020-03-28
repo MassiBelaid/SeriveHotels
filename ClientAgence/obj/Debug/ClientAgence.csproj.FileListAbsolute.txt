@@ -1,0 +1,11 @@
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\bin\Debug\ClientAgence.exe.config
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\bin\Debug\ClientAgence.exe
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\bin\Debug\ClientAgence.pdb
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.csprojAssemblyReference.cache
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.Properties.Resources.resources
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.csproj.GenerateResource.cache
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.exe
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.pdb
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.Form1.resources
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.Form2.resources
+C:\Users\Massi\source\repos\ServiceHotels\ClientAgence\obj\Debug\ClientAgence.ImageForm.resources

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ConsulterDisponibilité">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idAgence" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mdpAgence" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPers" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dA" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dD" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsulterDisponibilitéResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsulterDisponibilitéResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Reserver">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idAgence" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="mdpAgence" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="numOffre" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="nom" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dA" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dD" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="nbPers" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="prenom" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numCarte" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReserverResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReserverResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendImage">
+        <s:complexType />
+      </s:element>
+      <s:element name="SendImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SendImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsulterDisponibilitéSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsulterDisponibilité" />
+  </wsdl:message>
+  <wsdl:message name="ConsulterDisponibilitéSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsulterDisponibilitéResponse" />
+  </wsdl:message>
+  <wsdl:message name="ReserverSoapIn">
+    <wsdl:part name="parameters" element="tns:Reserver" />
+  </wsdl:message>
+  <wsdl:message name="ReserverSoapOut">
+    <wsdl:part name="parameters" element="tns:ReserverResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendImageSoapIn">
+    <wsdl:part name="parameters" element="tns:SendImage" />
+  </wsdl:message>
+  <wsdl:message name="SendImageSoapOut">
+    <wsdl:part name="parameters" element="tns:SendImageResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceHotelSoap">
+    <wsdl:operation name="ConsulterDisponibilité">
+      <wsdl:input message="tns:ConsulterDisponibilitéSoapIn" />
+      <wsdl:output message="tns:ConsulterDisponibilitéSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Reserver">
+      <wsdl:input message="tns:ReserverSoapIn" />
+      <wsdl:output message="tns:ReserverSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendImage">
+      <wsdl:input message="tns:SendImageSoapIn" />
+      <wsdl:output message="tns:SendImageSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceHotelSoap" type="tns:ServiceHotelSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsulterDisponibilité">
+      <soap:operation soapAction="http://tempuri.org/ConsulterDisponibilité" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserver">
+      <soap:operation soapAction="http://tempuri.org/Reserver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendImage">
+      <soap:operation soapAction="http://tempuri.org/SendImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceHotelSoap12" type="tns:ServiceHotelSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsulterDisponibilité">
+      <soap12:operation soapAction="http://tempuri.org/ConsulterDisponibilité" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Reserver">
+      <soap12:operation soapAction="http://tempuri.org/Reserver" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendImage">
+      <soap12:operation soapAction="http://tempuri.org/SendImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceHotel">
+    <wsdl:port name="ServiceHotelSoap" binding="tns:ServiceHotelSoap">
+      <soap:address location="https://localhost:44358/ServiceHotel.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceHotelSoap12" binding="tns:ServiceHotelSoap12">
+      <soap12:address location="https://localhost:44358/ServiceHotel.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
